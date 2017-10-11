@@ -48,7 +48,6 @@ void menu(){
 
 int main()
 {
-    /*
     const string fileName = "inp.txt";
         ifstream in(fileName.c_str());
         if(in.fail()){
@@ -78,7 +77,6 @@ int main()
     cerr << c;
     c.Kivesz(temp);
     cerr << temp;
-    */
-    menu();
+    //menu();
     return 0;
 }

@@ -2,21 +2,20 @@
 #include "Sor.h"
 using namespace std;
 
-Sor::Sor(int elemek)
-{  maxMeret = elemek; sor = new int[maxMeret];
-   eleje = 1; vege = 0; darab = 0;
+Sor::Sor(int elemek) : maxMeret(elemek), sor(new int [maxMeret]), eleje(0), vege(0), darab(0) {}
+
+Sor::Sor (const Sor &eredeti) : maxMeret(eredeti.maxMeret), 
+								eleje(eredeti.eleje),
+								vege(eredeti.vege), 
+								darab(eredeti.darab), 
+								sor(new int[maxMeret])
+{
+	for (int i = 0; i < maxMeret; i++) 
+		sor[i] = eredeti.sor[i];
 }
 
-Sor::Sor (const Sor &eredeti)
- :maxMeret(eredeti.maxMeret), eleje(eredeti.eleje), vege(eredeti.vege), darab(eredeti.darab)
-    {
-        sor = new int[maxMeret];
-        for (int i = 0; i < maxMeret; i++) sor[i] = eredeti.sor[i];
-     }
 
-
-Sor::~Sor()
-{ delete [] sor;}
+Sor::~Sor() { delete [] sor;}
 
 void Sor::Berak(int v)
 {
@@ -30,7 +29,8 @@ void Sor::Berak(int v)
 
 void Sor::Kivesz(int &v)
 {
-    if(Ures()) cout << "Ures a sor." << endl;
+    if(Ures()) 
+		cout << "Ures a sor." << endl;
     else
     {
         v = sor[eleje];
@@ -40,22 +40,22 @@ void Sor::Kivesz(int &v)
 
 void Sor::Elso(int &v) const
 {
-    if(Ures()) cout << "Ures a sor." << endl;
-        else     v = sor[eleje];
+    if(Ures()) 
+		cout << "Ures a sor." << endl;
+    else
+		v = sor[eleje];
 }
 
-bool Sor::Ures() const
-{ return (darab == 0); }
+bool Sor::Ures() const { return (darab == 0); }
 
-bool Sor::Tele() const
-{ return (darab == maxMeret); }
+bool Sor::Tele() const { return (darab == maxMeret); }
 
-int Sor::Hossz() const
-{ return darab; }
+int Sor::Hossz() const { return darab; }
 
 ostream& operator<<(ostream& s, Sor& a)
 {
-    for(int i=0; i<a.Hossz(); i++){
+    for(int i=0; i<a.Hossz(); i++)
+	{
         int x;
         a.Kivesz(x);
         s << x << ' ';
@@ -66,7 +66,8 @@ ostream& operator<<(ostream& s, Sor& a)
 
 istream& operator>>(istream& s, Sor& a)
 {
-    for(int i=0; i<a.maxMeret; i++) {
+    for(int i=0; i<a.maxMeret; i++) 
+	{
         int temp;
         s >> temp;
         a.Berak(temp);

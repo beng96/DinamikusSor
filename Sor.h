@@ -19,9 +19,8 @@ class Sor
       friend std::ostream& operator<< (std::ostream& s, Sor& a);
 
    private:
-      int *sor;
       int eleje, vege, darab, maxMeret;
-
+      int *sor;
 };
 
 #endif // SOR_H_INCLUDED
